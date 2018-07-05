@@ -2,7 +2,7 @@
 
 In order to store emojis in MySQL ≥5.5 you need to enable the `utf8mb4` character set for any individual fields that need to support emoji characters. This guide assumes you're changing a single field, but the process is the same for multiple fields – just add more `RunSQL` steps in the migration.
 
-No model changes are necessary, but after creating your field you will need to create a manual migration to run the necessary SQL commands to change the charset. You will need to know 1) the name of the table containing the field you want to change, 2) the name of the field, 3) the current type of the field, e.g. `VARCHAR(1000)`.
+No model changes are necessary, but after creating your field you will need to create a manual migration to run the necessary SQL commands to change the charset. You will need to know 1) the name of the table containing the field you want to change, 2) the name of the field, 3) the current type of the field, e.g. `VARCHAR(1000)` and 4) whether the field is currently set to `NOT NULL`.
 
 ```shell
 $ django-admin makemigrations --empty --name switch_to_utf8mb4_columns yourappname
@@ -10,13 +10,13 @@ $ django-admin makemigrations --empty --name switch_to_utf8mb4_columns yourappna
 
 You can name the migration anything you like.
 
-Open the newly created migration file and edit it so that the `operations` section looks like the following – be sure to substitute the name of your table, the name of the field and the field type:
+Open the newly created migration file and edit it so that the `operations` section looks like the following – be sure to substitute the name of your table, the name of the field and the field type (and omit the `NOT NULL` to match the field's current definition as necessary):
 
 ```python
 operations = [
     migrations.RunSQL(
         sql=['ALTER TABLE yourappname_modelname MODIFY fieldname VARCHAR(1000) '
-             'CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci'],
+             'CHARSET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL'],
         reverse_sql=['ALTER TABLE yourappname_modelname MODIFY fieldname '
                      'VARCHAR(1000)']
     ),
@@ -46,6 +46,8 @@ Finally, migrate:
 ```shell
 $ django-admin migrate yourappname
 ```
+
+If your project uses multiple database providers and you want to only run this migration conditionally, see (this SO answer)[https://stackoverflow.com/a/45232678/258794]. You will need to use `atomic=False`, though.
 
 ### Sources
 
