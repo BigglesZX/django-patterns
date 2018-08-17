@@ -30,3 +30,5 @@ def navigation_items(request):
         'NAVIGATION_ITEMS': items,
     }
 ```
+
+Note that if there are urlpatterns in your config that exist outside of a project app, you should check that `request.resolver_match` is not `None` before then checking the value of `request.resolver_match.app_name`.
