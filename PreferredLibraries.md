@@ -31,9 +31,13 @@ In template:
 
 Use `django-constance` to supplement runtime settings with database-backed configuration. The pip installation candidate is `django-constance[database]` – installing `django-constance` on its own results in missing dependencies.
 
+## DRY admin thumbnails
+
+For a convenient DRY way to add thumbnail images to your admin list views and forms, try [`django-admin-thumbnails`](https://github.com/BigglesZX/django-admin-thumbnails) (full disclosure: I wrote it).
+
 ## Inlining static files in templates
 
-E.g. priority JavaScript files, SVG Symbol files etc. Use `django-simpleinliner` (full disclosure: I wrote it).
+E.g. priority JavaScript files, SVG Symbol files etc. Use [`django-simpleinliner`](https://github.com/BigglesZX/django-simpleinliner) (full disclosure: I wrote it).
 
 ## Image cropping controls in the admin
 
