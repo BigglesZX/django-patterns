@@ -29,7 +29,7 @@ In template:
 
 ## Database-based config/settings
 
-Use `django-constance` to supplement runtime settings with database-backed configuration. Be aware that as of July 2018 `django-constance` appears to have an undeclared dependency on `django-picklefield`, so you'll need to install that as well.
+Use `django-constance` to supplement runtime settings with database-backed configuration. The pip installation candidate is `django-constance[database]` – installing `django-constance` on its own results in missing dependencies.
 
 ## Inlining static files in templates
 
@@ -85,6 +85,10 @@ The canonical ReCAPTCHA library is `django-recaptcha`.
 ## Simple colour picker field
 
 `django-colorfield` is lightweight and works well.
+
+## Singleton models
+
+`django-solo` provides simple mixins to help create and manage singleton models, and works perfectly as of Django 1.11 (and probably beyond).
 
 ## Sortable models and inlines
 
