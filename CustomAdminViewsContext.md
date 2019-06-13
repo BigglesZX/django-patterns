@@ -1,6 +1,6 @@
 # Custom Admin Views With Context
 
-When writing custom admin views *without* extending the `AdminSite` model (e.g. if you find that method a bit messy for just one or two views), I found it a mystery how I was meant to ensure my admin-facing templates received the same context as regular admin views, for data like `title`, `site_header` etc. Without this, the full admin UI won't render.
+When writing custom admin views via extending the `AdminSite` or `ModelAdmin` classes' `get_urls` method, or by manually including URLs, I couldn't figure out how I was meant to ensure my admin-facing templates received the same context as regular admin views, for data like `title`, `site_header` etc. Without this, the full admin UI won't render.
 
 The solution, once I found it, was pretty simple:
 
