@@ -36,3 +36,15 @@ textinput
 ```
 
 If you need to capture the output of one of these filters for use in `if` statements, you can use the `with` template tag.
+
+Since Django 3.1, there's also the [`widget_type`](https://docs.djangoproject.com/en/3.1/ref/forms/api/#django.forms.BoundField.widget_type) field attribute:
+
+```liquid
+{% for field in form %}
+    {% if field.widget_type == 'checkbox' %}
+        # render one way
+    {% else %}
+        # render another way
+    {% endif %}
+{% endfor %}
+```
