@@ -47,7 +47,7 @@ Finally, migrate:
 $ django-admin migrate yourappname
 ```
 
-If your project uses multiple database providers and you want to only run this migration conditionally, see (this SO answer)[https://stackoverflow.com/a/45232678/258794]. You will need to use `atomic=False`, though.
+If your project uses multiple database providers and you want to only run this migration conditionally, see [this SO answer](https://stackoverflow.com/a/45232678/258794). You will need to use `atomic=False`, though.
 
 ### Sources
 
